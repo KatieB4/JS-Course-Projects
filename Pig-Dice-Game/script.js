@@ -5,8 +5,13 @@ let currentScore = Number(document.querySelector('.current-score').textContent);
 const setTextNum = function (numberPlacement, newNumber) {
   document.querySelector(`${numberPlacement}`).textContent = newNumber;
 };
+const clickListen = function (btnClicked, handleClick) {
+  document.querySelector(btnClicked).addEventListener('click', handleClick);
+};
 
-document.querySelector('.btn--roll').addEventListener('click', function () {
+clickListen('.btn--roll', rollDie);
+
+function rollDie() {
   const roll = Number(Math.trunc(Math.random() * 6) + 1);
   const dieNum = `dice-${roll}.png`;
   document.querySelector('.dice').setAttribute('src', dieNum);
@@ -21,17 +26,19 @@ document.querySelector('.btn--roll').addEventListener('click', function () {
   } else {
     currentScore += roll;
 
-    // ---TODO--- set winner
+    // ---TODO--- set winner, not currentScore, but player's score
     // if (currentScore >= 100) {
     //   console.log('winner!');
     // }
   }
   setTextNum('.current-score', currentScore);
-});
+}
 
-document.querySelector('.btn--hold').addEventListener('click', function () {
+clickListen('.btn--hold', saveScore);
+
+function saveScore() {
   let heldScore = Number(document.querySelector('.score').textContent);
   heldScore += currentScore;
   setTextNum('.player--active .score', heldScore);
   currentScore = 0;
-});
+}
