@@ -33,7 +33,8 @@ function rollDie() {
     currentScore += roll;
     setTextNum('.player--active .current-score', currentScore);
     // ---TODO--- set winner, not with currentScore, but with player's score
-    // if (currentScore >= 100) {
+    // console.log(document.querySelector('.player--active .score').textContent);
+    // if (active player heldScore >= 10) {
     //   console.log('winner!');
     // }
     // console.log(
@@ -47,12 +48,18 @@ function rollDie() {
   }
 }
 
+// ---TODO--- make new function to update scores
+
 function saveScore() {
-  heldScore += currentScore;
-  setTextNum('.player--active .score', heldScore);
-  currentScore = 0;
-  setTextNum('.player--active .current-score', currentScore);
-  switchPlayer();
+  if (currentScore != 0) {
+    heldScore += currentScore;
+    setTextNum('.player--active .score', heldScore);
+    // ---BUG--- this is currently replacing the score each time instead of adding to it
+    currentScore = 0;
+    heldScore = 0;
+    setTextNum('.player--active .current-score', currentScore);
+    switchPlayer();
+  }
 }
 
 function switchPlayer() {
