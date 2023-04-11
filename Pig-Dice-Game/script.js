@@ -6,14 +6,6 @@ let currentScore = Number(
 
 let storedScore = 0;
 
-// let heldScore1 = Number(
-//   document.querySelector('.player--0 .score').textContent
-// );
-
-// let heldScore2 = Number(
-//   document.querySelector('.player--1  .score').textContent
-// );
-
 const players = document.querySelectorAll('.player');
 
 function setTextNum(numberPlacement, newNumber) {
@@ -63,52 +55,6 @@ function saveScore() {
     switchPlayer();
   }
 }
-
-// function updateSavedScore2() {
-//   if (currentScore != 0) {
-//     if (
-//       document.querySelector('.player--active').classList.contains('player--0')
-//     ) {
-//       heldScore1 += currentScore;
-//       setTextNum('.player--active .score', heldScore1);
-//       if (document.querySelector('.player--active .score').textContent >= 10) {
-//         console.log('winner!');
-//       }
-//     }
-
-//     if (
-//       document.querySelector('.player--active').classList.contains('player--1')
-//     ) {
-//       heldScore2 += currentScore;
-//       setTextNum('.player--active .score', heldScore2);
-//       if (document.querySelector('.player--active .score').textContent >= 10) {
-//         console.log('winner!');
-//       }
-//     }
-//     currentScore = 0;
-//     setTextNum('.player--active .current-score', currentScore);
-
-//     switchPlayer();
-//   }
-// }
-
-// function saveScore() {
-//   if (currentScore != 0) {
-//     console.log(heldScore);
-//     heldScore += currentScore;
-//     console.log(heldScore);
-//     setTextNum('.player--active .score', heldScore);
-//     currentScore = 0;
-//     // ---BUG--- this is currently replacing the score each time instead of adding to it
-//     heldScore = 0;
-//     console.log(heldScore);
-//     // ---BUG--- without heldScore reset to zero, both sides accumulate in one- make into loop for each half?
-//     setTextNum('.player--active .current-score', currentScore);
-//     console.log(heldScore);
-//     switchPlayer();
-//     console.log(heldScore);
-//   }
-// }
 
 function switchPlayer() {
   for (let i = 0; i < players.length; i++) {
