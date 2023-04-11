@@ -53,6 +53,10 @@ function saveScore() {
     storedScore += currentScore;
     setTextNum('.player--active .score', storedScore);
 
+    if (storedScore >= 100) {
+      winner();
+    }
+
     currentScore = 0;
     setTextNum('.player--active .current-score', currentScore);
 
@@ -128,6 +132,14 @@ function startOver() {
 
   document.querySelector('.player--0').classList.add('player--active');
   // document.querySelector('.player--1').classList.remove('player--active');
+}
+
+function winner() {
+  let winningPlayer = document.querySelector(
+    '.player--active .name'
+  ).textContent;
+  alert(`${winningPlayer} wins!`);
+  startOver();
 }
 
 clickListen('.btn--roll', rollDie);
